@@ -13,3 +13,4 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 eval "$(starship init zsh)"
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
