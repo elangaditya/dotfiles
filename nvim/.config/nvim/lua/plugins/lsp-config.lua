@@ -31,6 +31,7 @@ return {
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Go to references" })
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code actions" })
 			vim.keymap.set("n", "<leader>ge", vim.diagnostic.open_float, { desc = "Open error" })
+			vim.keymap.set("n", "<leader>gR", vim.lsp.buf.rename, { desc = "Rename symbol" })
 		end,
 	},
 }

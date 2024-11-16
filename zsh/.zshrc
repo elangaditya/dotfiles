@@ -8,6 +8,7 @@ alias get_idf='. $HOME/esp-idf/export.sh'
 
 # ls color
 alias ls='ls --color=always'
+alias grep='grep --color=always'
 
 # nvim
 export PATH="$PATH:/opt/nvim-linux64/bin"
@@ -16,3 +17,5 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 source <(fzf --zsh)
 eval "$(starship init zsh)"
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+. "$HOME/.local/bin/env"
