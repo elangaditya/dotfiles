@@ -13,12 +13,18 @@ return {
             require("telescope.themes").get_dropdown({}),
           },
         },
+        defaults = {
+          file_ignore_patterns = {
+            "node_modules",
+            "dist",
+          },
+        },
       })
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Find files" })
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Grep directory" })
       vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, { desc = "Old files" })
-      vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "View buffers"})
+      vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "View buffers" })
       require("telescope").load_extension("ui-select")
     end,
   },
