@@ -12,10 +12,13 @@ alias grep='grep --color=always'
 
 # nvim
 export PATH="$PATH:/opt/nvim-linux64/bin"
+alias vi='nvim'
 
 # Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-eval "$(starship init zsh)"
+# source <(fzf --zsh)
+# eval "$(starship init zsh)"
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 . "$HOME/.local/bin/env"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
