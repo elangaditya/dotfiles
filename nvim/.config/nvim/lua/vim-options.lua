@@ -12,9 +12,11 @@ vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
 vim.cmd("set relativenumber")
 vim.cmd("set number")
+vim.cmd("set conceallevel=2")
 
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 
 -- Buffer navigation
 vim.keymap.set("n", "H", ":bp<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "L", ":bn<CR>", { desc = "Next buffer" })
+
