@@ -24,6 +24,7 @@ return {
 				path = "~/brain/",
 			},
 		},
+		disable_frontmatter = true,
 		templates = {
 			subdir = "templates",
 			date_format = "%Y-%m-%d",
