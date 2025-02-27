@@ -17,7 +17,7 @@ alias grep='grep --color=always'
 export PATH="$PATH:/opt/nvim-linux64/bin"
 alias vi='nvim'
 alias vic='cd ~/.config/nvim && nvim && cd -'
-alias viz='cd && nvim .zshrc && cd -'
+alias viz='cd && nvim ~/.zshrc && cd -'
 alias vio='cd ~/brain && nvim && cd -'
 
 # Set up fzf key bindings and fuzzy completion
