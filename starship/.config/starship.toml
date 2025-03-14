@@ -1,68 +1,96 @@
-format = """
-[░▒▓](pink)\
-[ 󱐋 ](bg:pink fg:surface0)\
-[](bg:peach fg:pink)\
+# Insert a blank line between shell prompts
+add_newline = true
+
+# Increase the default command timeout to 2 seconds
+command_timeout = 2000
+
+palette = 'catppuccin_mocha'
+
+# Define the order and format of the information in our prompt
+format = """\
+[](fg:mauve)\
 $directory\
-[](bg:flamingo fg:peach)\
-$git_branch\
-$git_status\
-[](bg:rosewater fg:flamingo )\
-$nodejs\
-$rust\
-$golang\
-$php\
-[](fg:rosewater bg:sapphire)\
-$time\
-[ ](fg:sapphire)\
-\n$character"""
+${custom.directory_separator_not_git}\
+${custom.directory_separator_git}\
+$symbol($git_branch[](fg:yellow))\
+$symbol( $git_commit$git_status$git_metrics$git_state$golang)$fill$cmd_duration$username$hostname$time\
+$line_break
+$character"""
 
-palette = "catppuccin_mocha"
-[directory]
-style = "fg:surface0 bg:peach"
-format = "[ $path ]($style)"
-truncation_length = 3
-truncation_symbol = "…/"
+# Fill character (empty space) between the left and right prompt
+[fill]
+symbol = " "
 
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+# Disable the line break between the first and second prompt lines
+[line_break]
+disabled = true
 
-[git_branch]
-symbol = ""
-style = "bg:flamingo"
-format = '[[ $symbol $branch ](fg:base bg:flamingo)]($style)'
+[username]
+format = "[$user](fg:blue)"
 
-[git_status]
-style = "bg:#394260"
-format = '[[($all_status$ahead_behind )](bg:flamingo fg:base)]($style)'
-
-[nodejs]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](bg:rosewater fg:blue)]($style)'
-
-[rust]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](bg:rosewater fg:blue)]($style)'
-
-[golang]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](bg:rosewater fg:blue)]($style)'
-
-[php]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](bg:rosewater fg:blue)]($style)'
+[hostname]
+format = "[@$hostname](fg:lavender)"
 
 [time]
 disabled = false
-time_format = "%R" # Hour:Minute Format
-style = "bg:sapphire"
-format = '[[  $time ](bg:sapphire fg:surface1)]($style)'
+format = '[ $time](fg:surface2)'
+time_format = '%R'
+utc_time_offset = '+7'
+
+# Customize the format of the working directory
+[directory]
+format = "[  $path ]($style)"
+style = "fg:surface0 bg:mauve"
+
+[git_branch]
+symbol = " "
+format = "[ $symbol$branch(:$remote_branch) ]($style)"
+style = "fg:surface0 bg:yellow"
+
+[git_metrics]
+disabled = false
+
+[nodejs]
+format = "via [$symbol($version )]($style)"
+style = "yellow"
+
+[package]
+disabled = true # Enable to output the current working directory's package version
+format = "[$symbol$version]($style) "
+display_private = true
+
+# Output the command duration if over 2 seconds
+[cmd_duration]
+min_time = 2_000
+format = "[  $duration ]($style)"
+style = "white"
+
+# Customize the battery indicator
+[battery]
+format = "[$symbol $percentage]($style) "
+empty_symbol = "🪫"
+charging_symbol = "🔋"
+full_symbol = '🔋'
+
+[[battery.display]]
+threshold = 10
+style = 'red'
+
+# Output a styled separator right after the directory when inside a git repository.
+[custom.directory_separator_git]
+description = "Output a styled separator right after the directory when inside a git repository."
+command = ""
+format = "[](fg:mauve bg:yellow)"
+# Only when inside git repository
+when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
+
+# Output a styled separator right after the directory when NOT inside a git repository.
+[custom.directory_separator_not_git]
+description = "Output a styled separator right after the directory when NOT inside a git repository."
+command = ""
+format = "[](fg:mauve)"
+# Only when NOT inside a git repository
+when = "! git rev-parse --is-inside-work-tree > /dev/null 2>&1"
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
@@ -91,3 +119,164 @@ surface0 = "#313244"
 base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[cmake]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[crystal]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fennel]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
+
+[git_commit]
+tag_symbol = '  '
+
+[golang]
+symbol = "(fg: blue) "
+
+[guix_shell]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+symbol = "󰔷 "
+
+[nim]
+symbol = "󰆥 "
+
+[nix_shell]
+symbol = " "
+
+[ocaml]
+symbol = " "
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CachyOS = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+Nobara = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[pijul_channel]
+symbol = " "
+
+[python]
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = "󱘗 "
+
+[scala]
+symbol = " "
+
+[swift]
+symbol = " "
+
+[zig]
+symbol = " "
+
+[gradle]
+symbol = " "
