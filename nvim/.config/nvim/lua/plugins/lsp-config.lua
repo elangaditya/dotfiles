@@ -29,6 +29,7 @@ return {
 			-- lspconfig.rust_analyzer.setup(opts)
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+			vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Go to references" })
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code actions" })
 			vim.keymap.set("n", "<leader>ge", vim.diagnostic.open_float, { desc = "Open error" })
