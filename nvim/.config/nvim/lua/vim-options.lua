@@ -14,6 +14,7 @@ vim.cmd("set relativenumber")
 vim.cmd("set number")
 vim.cmd("set conceallevel=2")
 vim.cmd("set cursorline")
+vim.cmd("set so=5")
 
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 
