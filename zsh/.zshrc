@@ -21,10 +21,21 @@ alias viz='cd && nvim ~/.zshrc && cd -'
 alias vio='cd ~/brain && nvim && cd -'
 
 # Set up fzf key bindings and fuzzy completion
-# source <(fzf --zsh)
 eval "$(starship init zsh)"
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Syntax highlighting
+mac="Darwin"
+case `uname` in
+  Darwin)
+    export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlighting/highlighters
+    ;;
+  Linux)
+    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    ;;
+esac
 
-. "$HOME/.local/bin/env"
+# Macos system
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# . "$HOME/.local/bin/env"
+
+source <(fzf --zsh)
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
