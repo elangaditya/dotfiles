@@ -17,6 +17,7 @@ return {
 					file_ignore_patterns = {
 						"node_modules",
 						"dist",
+            "mocks",
 					},
 				},
 			})
@@ -25,6 +26,11 @@ return {
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Grep directory" })
 			vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, { desc = "Old files" })
 			vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "View buffers" })
+
+      vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Find references" })
+      vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Go to definition" })
+      vim.keymap.set("n", "gD", builtin.lsp_type_definitions, { desc = "Go to type definition" })
+      vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "Go to implementation" })
 			require("telescope").load_extension("ui-select")
 			defaults = {
 				vimgrep_arguments = {

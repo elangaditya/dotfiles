@@ -5,14 +5,14 @@ return {
     dependencies = { "mfussenegger/nvim-dap" },
     config = function(_, opts)
       require("dap-go").setup({
-        dap_configurations = {
-          {
-            type = "go",
-            name = "Attach remote",
-            mode = "remote",
-            request = "attach",
-          },
-        },
+        -- dap_configurations = {
+        --   {
+        --     type = "go",
+        --     name = "Debug Project (Main)",
+        --     request = "launch",
+        --     program = "./main.go"
+        --   },
+        -- },
         delve = {
           path = "dlv",
           initialize_timeout_sec = 20,
@@ -27,7 +27,27 @@ return {
         },
       })
 
+      local dap = require('dap')
+      dap.configurations.go = {
+        {
+          type = "go",
+          name = "Debug main",
+          request = "launch",
+          program = "./main.go",
+        },
+        {
+          type = "go",
+          name = "Debug test",
+          request = "launch",
+          mode = "test",
+          program = "${file}",
+        }
+      }
+
       -- Mappings
+      vim.keymap.set("n", "<leader>dgr", function()
+        dap.run(dap.configurations.go[1])
+      end)
       vim.keymap.set("n", "<leader>dgt", function()
         require("dap-go").debug_test()
       end, { desc = "Debug test" })

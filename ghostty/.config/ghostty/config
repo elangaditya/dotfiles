@@ -44,6 +44,10 @@
 #
 theme = mocha
 window-decoration = server
-font-family = "JetBrains Mono Nerd Font"
-font-size = 14
+
+font-family = "JetBrainsMono Nerd Font Mono"
+font-size = 11
 background-opacity = 0.95
+
+macos-option-as-alt = true
+# background-blur = true

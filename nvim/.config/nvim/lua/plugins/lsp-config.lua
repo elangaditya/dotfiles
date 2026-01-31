@@ -21,9 +21,8 @@ return {
       local opts = {
         capabilities = capabilities,
       }
-      local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup(opts)
-      lspconfig.gopls.setup({
+      vim.lsp.config('lua_ls', opts)
+      vim.lsp.config('gopls', {
         capabilities = capabilities,
         filetypes = { "go", "gomod", "gowork", "gotmpl" },
         settings = {
@@ -32,15 +31,17 @@ return {
             usePlaceholders = true,
             analyses = {
               unusedParams = true,
+              modernize = false
             },
           },
         },
       })
+      vim.lsp.enable('gopls')
+      vim.lsp.enable('lua_ls')
       -- lspconfig.rust_analyzer.setup(opts)
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-      vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
-      vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to references" })
+      -- vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to references" })
       vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { desc = "Code actions" })
       vim.keymap.set("n", "ge", vim.diagnostic.open_float, { desc = "Open error" })
       vim.keymap.set("n", "gR", vim.lsp.buf.rename, { desc = "Rename symbol" })
