@@ -33,6 +33,8 @@ case "$(uname)" in
   "Darwin")
     source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
+    export GITPATH="gitlab.com/projectaltair/gpn/endor/backend"
+    alias vio='cd ~/notes && nvim && cd -'
     ;;
   "Linux")
     source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

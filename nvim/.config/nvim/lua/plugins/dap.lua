@@ -71,6 +71,7 @@ return {
       vim.keymap.set("n", "<Leader>db", function()
         require("dap").toggle_breakpoint()
       end, { desc = "Toggle breakpoint" })
+      vim.keymap.set("n", "<Leader>dcb", ":DapClearBreakpoints", { desc = "Clear breakpoints" })
       vim.keymap.set("n", "<Leader>lp", function()
         require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
       end, { desc = "Set breakpoint log message" })
