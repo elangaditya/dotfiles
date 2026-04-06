@@ -36,7 +36,9 @@ return {
           },
         },
       })
+      vim.lsp.config('buf_ls', opts)
       vim.lsp.enable('gopls')
+      vim.lsp.enable('buf_ls')
       vim.lsp.enable('lua_ls')
       -- lspconfig.rust_analyzer.setup(opts)
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})

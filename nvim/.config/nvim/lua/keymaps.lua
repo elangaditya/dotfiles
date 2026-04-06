@@ -11,3 +11,6 @@ vim.keymap.set("n", "<leader>gbb", ":GitBlameOpenCommitURL<CR>", { desc = "Git B
 
 -- Open Fugitive status in a vertical split with a width of 60 columns
 vim.keymap.set('n', '<leader>gg', '<cmd>vertical Git<CR><cmd>vertical resize -60<CR>', { desc = 'Git status (vertical)' })
+
+-- Function to toggle between relative and absolute line numbers
+vim.keymap.set('n', '<leader>rn', ":set rnu!<CR>", { desc = 'Toggle relative line numbers' })
