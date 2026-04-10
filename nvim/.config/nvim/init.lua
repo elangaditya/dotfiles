@@ -12,9 +12,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 -- vim.o.guicursor = "n-v-c-sm-i-ci-ve:block,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon100-Cursor/lCursor"
 
-vim.api.nvim_create_autocmd('Filetype', {
-  pattern = { 'go' },
-  callback = function() vim.treesitter.start() end,
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  callback = function()
+    -- pcall prevents errors on filetypes without a valid Tree-sitter parser
+    pcall(vim.treesitter.start)
+  end,
 })
 
 require("vim-options")
