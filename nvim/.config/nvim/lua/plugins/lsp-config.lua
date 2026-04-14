@@ -24,11 +24,17 @@ return {
       vim.lsp.config('lua_ls', opts)
       vim.lsp.config('gopls', {
         capabilities = capabilities,
+        on_attach = function(client, bufnr)
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+          vim.api.nvim_clear_autocmds({ group = "nvim.lsp.b_" .. bufnr .. "_save", buffer = bufnr })
+        end,
         filetypes = { "go", "gomod", "gowork", "gotmpl" },
         settings = {
           gopls = {
             completeUnimported = true,
             usePlaceholders = true,
+            gofumpt = false,
             analyses = {
               unusedParams = true,
               modernize = false
