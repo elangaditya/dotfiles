@@ -10,7 +10,7 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         automatic_enable = false,
-        ensure_installed = { "lua_ls", "gopls" },
+        ensure_installed = { "lua_ls", "gopls", "clangd" },
       })
     end,
   },
@@ -46,6 +46,7 @@ return {
       vim.lsp.enable('gopls')
       vim.lsp.enable('buf_ls')
       vim.lsp.enable('lua_ls')
+      vim.lsp.enable('clangd')
       -- lspconfig.rust_analyzer.setup(opts)
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
